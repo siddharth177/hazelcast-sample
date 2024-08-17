@@ -29,8 +29,8 @@ public class CacheDomain<V> implements CacheService<V> {
     }
 
     @Override
-    public V remove(String key) {
-        return cache.remove(key);
+    public void remove(String key) {
+        cache.remove(key);
     }
 
     @Override

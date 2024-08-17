@@ -538,4 +538,15 @@
         </edge-defaults>
     </jet>
     <integrity-checker enabled="false"/>
+    <map name="student-cache">
+        <async-backup-count>1</async-backup-count>
+        <backup-count>1</backup-count>
+        <max-idle-seconds>600</max-idle-seconds>
+        <time-to-live-seconds>600</time-to-live-seconds>
+        <eviction eviction-policy="LFU" max-size-policy="USED_HEAP_PERCENTAGE" size="20"/>
+        <map-store>
+            <class-name>com.example.hazelcastsample.cache.models.Student</class-name>
+            <write-delay-seconds>0</write-delay-seconds>
+        </map-store>
+    </map>
 </hazelcast>
