@@ -1,6 +1,6 @@
 package com.example.hazelcastsample.cache.domains;
 
-import com.example.hazelcastsample.cache.configs.HazelcastEmbeddedConfig;
+import com.example.hazelcastsample.cache.configs.HzEmbeddedConfig;
 import com.example.hazelcastsample.cache.services.CacheService;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
@@ -13,7 +13,7 @@ import static org.springframework.beans.factory.config.ConfigurableBeanFactory.S
 @Scope(value = SCOPE_PROTOTYPE)
 public class HzCacheDomain<V> implements CacheService<V> {
     private IMap<String, V> cache;
-    public HzCacheDomain(HazelcastEmbeddedConfig.Caches hzCache, HazelcastInstance hazelcastInstance) {
+    public HzCacheDomain(HzEmbeddedConfig.Caches hzCache, HazelcastInstance hazelcastInstance) {
         this.cache = hazelcastInstance.getMap(hzCache.getCacheName());
     }
 

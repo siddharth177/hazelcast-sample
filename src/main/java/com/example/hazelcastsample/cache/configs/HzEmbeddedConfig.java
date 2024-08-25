@@ -11,11 +11,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.example.hazelcastsample.cache.configs.HazelcastEmbeddedConfig.Caches.STUDENT_CACHE;
+import static com.example.hazelcastsample.cache.configs.HzEmbeddedConfig.Caches.STUDENT_CACHE;
 
 @Configuration
 @Slf4j
-public class HazelcastEmbeddedConfig {
+public class HzEmbeddedConfig {
 
     @Bean(name = "hzEmbeddedInstance")
     public HazelcastInstance hazelcastInstance() {
