@@ -545,6 +545,7 @@
         <time-to-live-seconds>600</time-to-live-seconds>
         <eviction eviction-policy="LFU" max-size-policy="USED_HEAP_PERCENTAGE" size="20"/>
         <map-store enabled="true" initial-mode="LAZY">
+            <write-coalescing>true</write-coalescing>
             <class-name>com.example.hazelcastsample.cache.services.HzMapStore</class-name>
             <properties>
                 <property name="mongo.url">mongodb+srv://siddharth:rk9js11zFzXflPBO@mongocluster0.zvyln.mongodb.net/?appName=mongoCluster0</property>

@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import static com.example.hazelcastsample.cache.utils.Util.delay;
 
 @Service
@@ -27,7 +29,10 @@ public class HzStudentCacheService {
         if(student == null) {
             log.info("student with id {} not found in the cache", id);
             delay(0);
-            student = studentRepo.findById(id).get();
+            student = Optional
+                    .of(studentRepo.findById(id))
+                    .get()
+                    .orElseThrow(() -> new NullPointerException("student with id " + id + " not found"));
             studentCacheDomain.save(id, student);
             return student;
         } else {
