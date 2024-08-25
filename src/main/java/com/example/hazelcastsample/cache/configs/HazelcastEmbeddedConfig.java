@@ -1,6 +1,6 @@
 package com.example.hazelcastsample.cache.configs;
 
-import com.example.hazelcastsample.cache.domains.CacheDomain;
+import com.example.hazelcastsample.cache.domains.HzCacheDomain;
 import com.example.hazelcastsample.cache.models.Student;
 import com.hazelcast.config.ClasspathXmlConfig;
 import com.hazelcast.config.Config;
@@ -11,13 +11,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.example.hazelcastsample.cache.configs.HazelcastConfig.Caches.STUDENT_CACHE;
+import static com.example.hazelcastsample.cache.configs.HazelcastEmbeddedConfig.Caches.STUDENT_CACHE;
 
 @Configuration
 @Slf4j
-public class HazelcastConfig {
+public class HazelcastEmbeddedConfig {
 
-    @Bean
+    @Bean(name = "hzEmbeddedInstance")
     public HazelcastInstance hazelcastInstance() {
         return Hazelcast.newHazelcastInstance(setConfig());
     }
@@ -26,9 +26,9 @@ public class HazelcastConfig {
         return new ClasspathXmlConfig("hazelcast-config.xml");
     }
 
-    @Bean("studentCacheDomain")
-    public CacheDomain<Student> studentCacheDomain() {
-        return new CacheDomain<>(STUDENT_CACHE, this.hazelcastInstance());
+    @Bean("HzEmbeddedStudentCacheDomain")
+    public HzCacheDomain<Student> HzEmbeddedStudentCacheDomain() {
+        return new HzCacheDomain<>(STUDENT_CACHE, this.hazelcastInstance());
     }
 
     @Getter

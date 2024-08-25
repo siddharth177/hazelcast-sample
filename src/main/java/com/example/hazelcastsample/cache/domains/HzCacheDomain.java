@@ -1,10 +1,9 @@
 package com.example.hazelcastsample.cache.domains;
 
-import com.example.hazelcastsample.cache.configs.HazelcastConfig;
+import com.example.hazelcastsample.cache.configs.HazelcastEmbeddedConfig;
 import com.example.hazelcastsample.cache.services.CacheService;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +11,9 @@ import static org.springframework.beans.factory.config.ConfigurableBeanFactory.S
 
 @Component
 @Scope(value = SCOPE_PROTOTYPE)
-public class CacheDomain<V> implements CacheService<V> {
+public class HzCacheDomain<V> implements CacheService<V> {
     private IMap<String, V> cache;
-    public CacheDomain(HazelcastConfig.Caches hzCache, @Qualifier("hazelcastInstance") HazelcastInstance hazelcastInstance) {
+    public HzCacheDomain(HazelcastEmbeddedConfig.Caches hzCache, HazelcastInstance hazelcastInstance) {
         this.cache = hazelcastInstance.getMap(hzCache.getCacheName());
     }
 

@@ -1,6 +1,6 @@
 package com.example.hazelcastsample.cache.services;
 
-import com.example.hazelcastsample.cache.domains.CacheDomain;
+import com.example.hazelcastsample.cache.domains.HzCacheDomain;
 import com.example.hazelcastsample.cache.models.Student;
 import com.example.hazelcastsample.cache.repos.StudentRepo;
 import lombok.extern.slf4j.Slf4j;
@@ -11,12 +11,12 @@ import static com.example.hazelcastsample.cache.utils.Util.delay;
 
 @Service
 @Slf4j
-public class StudentService {
+public class HzStudentCacheService {
 
-    private CacheDomain<Student> studentCacheDomain;
-    private StudentRepo studentRepo;
+    private final HzCacheDomain<Student> studentCacheDomain;
+    private final StudentRepo studentRepo;
 
-    public StudentService(@Qualifier("studentCacheDomain") CacheDomain<Student> studentCacheDomain, StudentRepo studentRepo) {
+    public HzStudentCacheService(@Qualifier("HzEmbeddedStudentCacheDomain") HzCacheDomain<Student> studentCacheDomain, StudentRepo studentRepo) {
         this.studentCacheDomain = studentCacheDomain;
         this.studentRepo = studentRepo;
     }
