@@ -23,7 +23,7 @@ public class HazelcastEmbeddedConfig {
     }
 
     private Config setConfig() {
-        return new ClasspathXmlConfig("hazelcast-config.xml");
+        return new ClasspathXmlConfig("hz-embedded-config.xml");
     }
 
     @Bean("HzEmbeddedStudentCacheDomain")
