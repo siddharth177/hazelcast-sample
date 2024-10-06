@@ -1,15 +1,15 @@
 package com.example.hazelcastsample.cache.controllers;
 
 import com.example.hazelcastsample.cache.models.Student;
-import com.example.hazelcastsample.cache.services.HzStudentCacheService;
+import com.example.hazelcastsample.cache.services.HzStudentGenericCacheService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cache")
 public class HzEmbeddedGenericController {
 
-    private final HzStudentCacheService studentService;
-    public HzEmbeddedGenericController(HzStudentCacheService studentService) {
+    private final HzStudentGenericCacheService studentService;
+    public HzEmbeddedGenericController(HzStudentGenericCacheService studentService) {
         this.studentService = studentService;
     }
 
