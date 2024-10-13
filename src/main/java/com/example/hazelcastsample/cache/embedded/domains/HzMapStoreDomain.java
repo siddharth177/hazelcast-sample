@@ -2,7 +2,6 @@ package com.example.hazelcastsample.cache.embedded.domains;
 
 import com.example.hazelcastsample.commons.models.Student;
 import com.hazelcast.map.MapStore;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +11,11 @@ import java.util.Map;
 
 @Component
 public class HzMapStoreDomain implements MapStore<String, Student> {
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
+    public HzMapStoreDomain(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+
     private final String collectionName = "students";
 
     @Override

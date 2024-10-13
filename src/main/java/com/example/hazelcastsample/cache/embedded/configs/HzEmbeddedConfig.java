@@ -37,7 +37,7 @@ public class HzEmbeddedConfig {
                         .setName(STUDENT_CACHE.getCacheName())
                         .setMapStoreConfig(new MapStoreConfig()
                                 .setEnabled(true)
-                                .setWriteDelaySeconds(1000)
+                                .setWriteDelaySeconds(60)
                                 .setImplementation(hzMapStoreDomain)))
                 .setRestConfig(new RestConfig()
                         .setEnabled(true))
