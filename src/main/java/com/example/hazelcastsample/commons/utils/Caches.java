@@ -1,7 +1,6 @@
 package com.example.hazelcastsample.commons.utils;
 
 import lombok.Getter;
-import org.springframework.stereotype.Service;
 
 @Getter
 public enum Caches {
