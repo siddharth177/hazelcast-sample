@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
         info = @Info(
                 title = "Hazelcast Sample Application",
                 description = "Sample Application to demonstrate use of hazelcast.",
-                version = "1.0.0",
+                version = "${info.app.version}",
                 contact = @Contact(
                         name = "Siddharth Katiyar",
                         email = "siddharth.dev177@gmail.com"
