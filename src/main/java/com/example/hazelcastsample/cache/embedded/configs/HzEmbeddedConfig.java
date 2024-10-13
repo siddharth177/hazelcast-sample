@@ -29,8 +29,8 @@ public class HzEmbeddedConfig {
 
     private Config setConfig() {
         return new Config()
-                .setInstanceName("hz-sample-instance")
-                .setClusterName("hz-sample-cluster")
+                .setInstanceName("hz-embedded-instance")
+                .setClusterName("hz-embedded-cluster")
                 .addMapConfig(addStudentMapConfig())
                 .setRestConfig(setRestConfig());
     }
