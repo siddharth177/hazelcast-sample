@@ -3,9 +3,7 @@ package com.example.hazelcastsample.cache.embedded.configs;
 import com.example.hazelcastsample.cache.embedded.domains.HzCacheDomain;
 import com.example.hazelcastsample.cache.embedded.domains.HzMapStoreDomain;
 import com.example.hazelcastsample.commons.models.Student;
-import com.hazelcast.config.Config;
-import com.hazelcast.config.MapConfig;
-import com.hazelcast.config.MapStoreConfig;
+import com.hazelcast.config.*;
 import com.hazelcast.config.rest.RestConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
@@ -33,15 +31,29 @@ public class HzEmbeddedConfig {
         return new Config()
                 .setInstanceName("hz-sample-instance")
                 .setClusterName("hz-sample-cluster")
-                .addMapConfig(new MapConfig()
-                        .setName(STUDENT_CACHE.getCacheName())
-                        .setMapStoreConfig(new MapStoreConfig()
-                                .setEnabled(true)
-                                .setWriteDelaySeconds(60)
-                                .setImplementation(hzMapStoreDomain)))
-                .setRestConfig(new RestConfig()
-                        .setEnabled(true))
-                ;
+                .addMapConfig(addStudentMapConfig())
+                .setRestConfig(setRestConfig());
+    }
+
+    private RestConfig setRestConfig() {
+        return new RestConfig()
+                .setEnabled(true);
+    }
+
+    private MapConfig addStudentMapConfig() {
+        return new MapConfig()
+                .setName(STUDENT_CACHE.getCacheName())
+                .setAsyncBackupCount(2)
+                .setTimeToLiveSeconds(100000)
+                .setMaxIdleSeconds(100000)
+                .setEvictionConfig(new EvictionConfig()
+                        .setEvictionPolicy(EvictionPolicy.LRU)
+                        .setMaxSizePolicy(MaxSizePolicy.USED_HEAP_PERCENTAGE)
+                        .setSize(70))
+                .setMapStoreConfig(new MapStoreConfig()
+                        .setEnabled(true)
+                        .setWriteDelaySeconds(60)
+                        .setImplementation(hzMapStoreDomain));
     }
 
     @Bean("HzEmbeddedStudentCacheDomain")
