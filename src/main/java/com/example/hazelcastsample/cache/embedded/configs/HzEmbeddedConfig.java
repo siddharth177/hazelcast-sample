@@ -9,12 +9,11 @@ import com.hazelcast.config.MapStoreConfig;
 import com.hazelcast.config.rest.RestConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.example.hazelcastsample.cache.embedded.configs.HzEmbeddedConfig.Caches.STUDENT_CACHE;
+import static com.example.hazelcastsample.commons.utils.Caches.STUDENT_CACHE;
 
 @Configuration
 @Slf4j
@@ -35,7 +34,7 @@ public class HzEmbeddedConfig {
                 .setInstanceName("hz-sample-instance")
                 .setClusterName("hz-sample-cluster")
                 .addMapConfig(new MapConfig()
-                        .setName(STUDENT_CACHE.cacheName)
+                        .setName(STUDENT_CACHE.getCacheName())
                         .setMapStoreConfig(new MapStoreConfig()
                                 .setEnabled(true)
                                 .setWriteDelaySeconds(1000)
@@ -48,15 +47,5 @@ public class HzEmbeddedConfig {
     @Bean("HzEmbeddedStudentCacheDomain")
     public HzCacheDomain<Student> HzEmbeddedStudentCacheDomain() {
         return new HzCacheDomain<>(STUDENT_CACHE, this.hazelcastInstance());
-    }
-
-    @Getter
-    public enum Caches {
-        STUDENT_CACHE("student-cache");
-
-        private final String cacheName;
-        Caches(String name) {
-            this.cacheName = name;
-        }
     }
 }

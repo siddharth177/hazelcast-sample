@@ -1,7 +1,7 @@
 package com.example.hazelcastsample.cache.embedded.domains;
 
-import com.example.hazelcastsample.cache.embedded.configs.HzEmbeddedConfig;
 import com.example.hazelcastsample.cache.embedded.services.CacheService;
+import com.example.hazelcastsample.commons.utils.Caches;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import lombok.Getter;
@@ -16,7 +16,7 @@ public class HzCacheDomain<V> implements CacheService<V> {
     private IMap<String, V> cache;
     @Getter
     private HazelcastInstance hazelcastInstance;
-    public HzCacheDomain(HzEmbeddedConfig.Caches hzCache, HazelcastInstance hazelcastInstance) {
+    public HzCacheDomain(Caches hzCache, HazelcastInstance hazelcastInstance) {
         this.cache = hazelcastInstance.getMap(hzCache.getCacheName());
         this.hazelcastInstance = hazelcastInstance;
     }
