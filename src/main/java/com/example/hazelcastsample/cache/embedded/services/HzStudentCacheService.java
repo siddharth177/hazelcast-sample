@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class HzStudentCacheService {
 
-    private final HzCacheDomain<Student> studentCacheDomain;
+    private final HzCacheDomain<String, Student> studentCacheDomain;
 
-    public HzStudentCacheService(@Qualifier("HzEmbeddedStudentCacheDomain") HzCacheDomain<Student> studentCacheDomain) {
+    public HzStudentCacheService(@Qualifier("HzEmbeddedStudentCacheDomain") HzCacheDomain<String, Student> studentCacheDomain) {
         this.studentCacheDomain = studentCacheDomain;
     }
 

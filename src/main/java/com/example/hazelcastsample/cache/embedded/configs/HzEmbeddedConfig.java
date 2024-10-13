@@ -45,7 +45,7 @@ public class HzEmbeddedConfig {
     }
 
     @Bean("HzEmbeddedStudentCacheDomain")
-    public HzCacheDomain<Student> HzEmbeddedStudentCacheDomain() {
+    public HzCacheDomain<String, Student> HzEmbeddedStudentCacheDomain() {
         return new HzCacheDomain<>(STUDENT_CACHE, this.hazelcastInstance());
     }
 }

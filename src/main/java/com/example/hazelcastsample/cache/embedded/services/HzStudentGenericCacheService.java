@@ -16,10 +16,10 @@ import static com.example.hazelcastsample.commons.utils.Util.delay;
 // cache and persistence is maintained by developer.
 public class HzStudentGenericCacheService {
 
-    private final HzCacheDomain<Student> studentCacheDomain;
+    private final HzCacheDomain<String, Student> studentCacheDomain;
     private final StudentRepo studentRepo;
 
-    public HzStudentGenericCacheService(@Qualifier("HzEmbeddedStudentCacheDomain") HzCacheDomain<Student> studentCacheDomain, StudentRepo studentRepo) {
+    public HzStudentGenericCacheService(@Qualifier("HzEmbeddedStudentCacheDomain") HzCacheDomain<String, Student> studentCacheDomain, StudentRepo studentRepo) {
         this.studentCacheDomain = studentCacheDomain;
         this.studentRepo = studentRepo;
     }

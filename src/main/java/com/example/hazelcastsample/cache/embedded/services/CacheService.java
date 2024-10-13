@@ -1,9 +1,9 @@
 package com.example.hazelcastsample.cache.embedded.services;
 
-public interface CacheService<V> {
-    V save(String key, V value);
-    V get(String key);
-    void remove(String key);
+public interface CacheService<K, V> {
+    V save(K key, V value);
+    V get(K key);
+    void remove(K key);
     void clear();
-    boolean contains(String key);
+    boolean contains(K key);
 }

@@ -12,8 +12,8 @@ import static org.springframework.beans.factory.config.ConfigurableBeanFactory.S
 
 @Component
 @Scope(value = SCOPE_PROTOTYPE)
-public class HzCacheDomain<V> implements CacheService<V> {
-    private IMap<String, V> cache;
+public class HzCacheDomain<K, V> implements CacheService<K, V> {
+    private IMap<K, V> cache;
     @Getter
     private HazelcastInstance hazelcastInstance;
     public HzCacheDomain(Caches hzCache, HazelcastInstance hazelcastInstance) {
@@ -22,17 +22,17 @@ public class HzCacheDomain<V> implements CacheService<V> {
     }
 
     @Override
-    public V save(String key, V value) {
+    public V save(K key, V value)       {
         return cache.put(key, value);
     }
 
     @Override
-    public V get(String key) {
+    public V get(K key) {
         return cache.get(key);
     }
 
     @Override
-    public void remove(String key) {
+    public void remove(K key) {
         cache.remove(key);
     }
 
@@ -42,7 +42,7 @@ public class HzCacheDomain<V> implements CacheService<V> {
     }
 
     @Override
-    public boolean contains(String key) {
+    public boolean contains(K key) {
         return cache.containsKey(key);
     }
 
