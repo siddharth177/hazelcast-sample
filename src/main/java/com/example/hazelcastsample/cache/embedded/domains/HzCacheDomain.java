@@ -1,7 +1,7 @@
 package com.example.hazelcastsample.cache.embedded.domains;
 
 import com.example.hazelcastsample.cache.embedded.services.CacheService;
-import com.example.hazelcastsample.commons.utils.Caches;
+import com.example.hazelcastsample.commons.models.Caches;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import lombok.Getter;

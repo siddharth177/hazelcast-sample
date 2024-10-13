@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.example.hazelcastsample.commons.utils.Caches.STUDENT_CACHE;
+import static com.example.hazelcastsample.commons.models.Caches.STUDENT_CACHE;
 
 @Configuration
 @Slf4j
