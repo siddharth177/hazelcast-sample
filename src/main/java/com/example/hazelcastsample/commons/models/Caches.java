@@ -1,4 +1,4 @@
-package com.example.hazelcastsample.commons.utils;
+package com.example.hazelcastsample.commons.models;
 
 import lombok.Getter;
 
