@@ -1,4 +1,4 @@
-package com.example.hazelcastsample.cache.services;
+package com.example.hazelcastsample.cache.embedded.services;
 
 public interface CacheService<V> {
     V save(String key, V value);

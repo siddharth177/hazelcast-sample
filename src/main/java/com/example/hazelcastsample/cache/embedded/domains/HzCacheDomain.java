@@ -1,9 +1,10 @@
-package com.example.hazelcastsample.cache.domains;
+package com.example.hazelcastsample.cache.embedded.domains;
 
-import com.example.hazelcastsample.cache.configs.HzEmbeddedConfig;
-import com.example.hazelcastsample.cache.services.CacheService;
+import com.example.hazelcastsample.cache.embedded.configs.HzEmbeddedConfig;
+import com.example.hazelcastsample.cache.embedded.services.CacheService;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
+import lombok.Getter;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +14,11 @@ import static org.springframework.beans.factory.config.ConfigurableBeanFactory.S
 @Scope(value = SCOPE_PROTOTYPE)
 public class HzCacheDomain<V> implements CacheService<V> {
     private IMap<String, V> cache;
+    @Getter
+    private HazelcastInstance hazelcastInstance;
     public HzCacheDomain(HzEmbeddedConfig.Caches hzCache, HazelcastInstance hazelcastInstance) {
         this.cache = hazelcastInstance.getMap(hzCache.getCacheName());
+        this.hazelcastInstance = hazelcastInstance;
     }
 
     @Override

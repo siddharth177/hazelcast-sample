@@ -1,4 +1,4 @@
-package com.example.hazelcastsample.cache.utils;
+package com.example.hazelcastsample.commons.utils;
 
 import org.springframework.stereotype.Component;
 

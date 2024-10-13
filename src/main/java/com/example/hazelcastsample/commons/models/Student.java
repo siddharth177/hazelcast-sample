@@ -1,4 +1,4 @@
-package com.example.hazelcastsample.cache.models;
+package com.example.hazelcastsample.commons.models;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

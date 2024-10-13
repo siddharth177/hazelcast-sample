@@ -1,11 +1,13 @@
-package com.example.hazelcastsample.cache.controllers;
+package com.example.hazelcastsample.cache.embedded.controllers;
 
-import com.example.hazelcastsample.cache.models.Student;
-import com.example.hazelcastsample.cache.services.HzStudentCacheService;
+import com.example.hazelcastsample.commons.models.Student;
+import com.example.hazelcastsample.cache.embedded.services.HzStudentCacheService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cache/mapStore/")
+@Tag(name = "Embedded MapStore Cache Controller", description = "Apis' for demoing cache operations with hazelcast and mongoDb. Hazelcast handles data synchronization between persistence and cache.")
 public class HzEmbeddedMapStoreController {
     private final HzStudentCacheService hzStudentCacheService;
 

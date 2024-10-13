@@ -1,6 +1,6 @@
-package com.example.hazelcastsample.cache.domains;
+package com.example.hazelcastsample.cache.embedded.domains;
 
-import com.example.hazelcastsample.cache.models.Student;
+import com.example.hazelcastsample.commons.models.Student;
 import com.hazelcast.map.MapStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

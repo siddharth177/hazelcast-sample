@@ -1,7 +1,7 @@
-package com.example.hazelcastsample.cache.services;
+package com.example.hazelcastsample.cache.embedded.services;
 
-import com.example.hazelcastsample.cache.domains.HzCacheDomain;
-import com.example.hazelcastsample.cache.models.Student;
+import com.example.hazelcastsample.cache.embedded.domains.HzCacheDomain;
+import com.example.hazelcastsample.commons.models.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

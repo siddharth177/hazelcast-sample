@@ -1,15 +1,15 @@
-package com.example.hazelcastsample.cache.services;
+package com.example.hazelcastsample.cache.embedded.services;
 
-import com.example.hazelcastsample.cache.domains.HzCacheDomain;
-import com.example.hazelcastsample.cache.models.Student;
-import com.example.hazelcastsample.cache.repos.StudentRepo;
+import com.example.hazelcastsample.cache.embedded.domains.HzCacheDomain;
+import com.example.hazelcastsample.commons.models.Student;
+import com.example.hazelcastsample.cache.embedded.repos.StudentRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.example.hazelcastsample.cache.utils.Util.delay;
+import static com.example.hazelcastsample.commons.utils.Util.delay;
 
 @Service
 @Slf4j
